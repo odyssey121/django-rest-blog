@@ -9,6 +9,7 @@ def customer_image_file_path(instande, filename):
     filename = f'{uuid.uuid4()}.{ext}'
     return join('upload/avatars/', filename)
 
+
 # Create your models here.
 class UserProfile(AbstractUser):
 
@@ -17,3 +18,5 @@ class UserProfile(AbstractUser):
 
     def __str__(self):
         return f'{self.username}'
+
+

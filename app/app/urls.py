@@ -25,6 +25,5 @@ urlpatterns = [
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     url(r'^blog-api/', include('blog_api.urls'), name='blog_api')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
 # to have images urls in dev. in prod we don't need this, because of nginx
+

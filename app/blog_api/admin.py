@@ -4,3 +4,5 @@ from .models import Category, Article
 
 admin.site.register(Article)
 admin.site.register(Category)
+
+git

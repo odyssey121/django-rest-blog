@@ -20,3 +20,4 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField(Category, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+

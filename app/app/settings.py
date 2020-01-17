@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'blog_api',
 
     'rest_framework',
+
     'rest_framework.authtoken',
     'django.contrib.sites',  # if not include raise error
-    'allauth',
-    'allauth.account',
+
     'rest_auth',
     'rest_auth.registration',
     'allauth.socialaccount',
@@ -115,6 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
@@ -154,6 +155,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -172,6 +174,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 # EMAIL_HOST_USER =
 # EMAIL_HOST_PASSWORD =
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+
+
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 # Static files (CSS, JavaScript, Images)
@@ -182,3 +189,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
