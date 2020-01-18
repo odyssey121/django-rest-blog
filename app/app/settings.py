@@ -46,10 +46,12 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django.contrib.sites',  # if not include raise error
 
+    'allauth',
     'rest_auth',
+    # 'all_auth',
     'allauth.account',
     'rest_auth.registration',
-    'allauth.socialaccount',
+    'allauth.socialaccount'
 ]
 
 AUTH_USER_MODEL = 'profiles.UserProfile'  # Custom profile(users) model
@@ -131,13 +133,13 @@ ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 
-# AUTHENTICATION_BACKENDS = (
-#     # Needed to login by username in Django admin, regardless of `allauth`
-#     "django.contrib.auth.backends.ModelBackend",
-#
-#     # `allauth` specific authentication methods, such as login by e-mail
-#     "allauth.account.auth_backends.AuthenticationBackend",
-# )
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': [
@@ -149,7 +151,6 @@ REST_AUTH_SERIALIZERS = {
     # 'TOKEN_SERIALIZER': 'path.to.custom.TokenSerializer',
 }
 REST_FRAMEWORK = {
-
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
