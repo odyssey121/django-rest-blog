@@ -1,5 +1,15 @@
+#virual env folder
 venv
+
+.idea
+
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
-.idea
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+local_settings.py
 db.sqlite3
-.idea

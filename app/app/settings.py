@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',  # if not include raise error
 
     'rest_auth',
+    'allauth.account',
     'rest_auth.registration',
     'allauth.socialaccount',
 ]
