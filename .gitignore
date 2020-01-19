@@ -14,3 +14,4 @@ __pycache__/
 local_settings.py
 app/media
 db.sqlite3
+migrations/

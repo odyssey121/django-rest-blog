@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '^rxv0^0(v))b^%q^c82%xh+k@$h*cb+89!n_@$x-oyzxja&8-7'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -55,8 +53,9 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'profiles.UserProfile'  # Custom profile(users) model
-
-SITE_ID = 1   # rest registration needed
+ACCOUNT_LOGOUT_ON_GET = True
+SITE_ID = 1  # rest registration needed
+SEARCH_PARAM = 'filter'  # one param for filter query
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -98,7 +96,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -118,9 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 # enable registration by email
 # username generates automatically
@@ -153,10 +148,9 @@ REST_AUTH_SERIALIZERS = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -180,7 +174,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 
-
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 # Static files (CSS, JavaScript, Images)
@@ -191,4 +184,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-

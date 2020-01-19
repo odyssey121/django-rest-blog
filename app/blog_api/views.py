@@ -1,22 +1,38 @@
-from rest_framework import filters
+import django_filters.rest_framework
 from rest_framework import generics, status, viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from rest_framework.authentication import TokenAuthentication, BasicAuthentication
-from .models import Article, Category
-from .serializers import ArticleSerializer, CategorySerializer
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication, SessionAuthentication
+from .models import Article, Category, Tag
+from .serializers import ArticleSerializer, CategorySerializer, TagSerializer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import filters
 from .permissions import IsAuthorOfPost
 from rest_framework import permissions
+from .filters import CustomSearchFilter
 
 
 # Create your views here.
 
-class CategoryGenericView(viewsets.GenericViewSet, mixins.ListModelMixin, ):
+class TagGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
+                     mixins.CreateModelMixin):
+    auth_methods = ('create', 'put', 'delete',)
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+    authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
+
+    def get_permissions(self):
+        if self.action in self.auth_methods:
+            permission_classes = [IsAuthenticated, ]
+            return [permission() for permission in permission_classes]
+        return list()
+
+
+class CategoryGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
+                          mixins.RetrieveModelMixin):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    authentication_classes = (TokenAuthentication, BasicAuthentication)
+    authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
 
     auth_methods = ('create', 'put', 'delete',)
 
@@ -37,10 +53,17 @@ class ArticlesGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
                           mixins.CreateModelMixin, mixins.RetrieveModelMixin):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    authentication_classes = (TokenAuthentication,)
-    # filter_backends = [filters.SearchFilter]
+    authentication_classes = (TokenAuthentication, SessionAuthentication, BasicAuthentication)
+    filter_backends = [filters.SearchFilter]
     auth_methods = ('create', 'put', 'delete',)
-    search_fields = ['author']
+    search_fields = ['=author__username', '=categories__name']
+
+
+    # def get_queryset(self):
+    #     username = self.request.query_params.get('author', None)
+    #     if username is not None:
+    #         self.queryset = self.queryset.filter(author__username=username)
+    #     return self.queryset
 
     def get_permissions(self):
         if self.action in self.auth_methods:
@@ -67,7 +90,7 @@ class ArticleGenericView(generics.GenericAPIView, mixins.RetrieveModelMixin,
     serializer_class = ArticleSerializer
     lookup_field = 'id'
     queryset = Article.objects.all()
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [TokenAuthentication, BasicAuthentication, SessionAuthentication]
 
     def get_permissions(self):
         if self.request.method not in permissions.SAFE_METHODS:
@@ -85,4 +108,3 @@ class ArticleGenericView(generics.GenericAPIView, mixins.RetrieveModelMixin,
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
-
