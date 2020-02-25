@@ -15,3 +15,15 @@ local_settings.py
 app/media
 db.sqlite3
 migrations/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
