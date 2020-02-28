@@ -1,5 +1,7 @@
 @import url('./fonts.css');
-html, body {
+
+html,
+body {
     padding: 0;
     margin: 0;
 }
@@ -8,7 +10,9 @@ html, body {
     box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -20,23 +24,27 @@ a {
     border-style: none;
 }
 
-h1 {
+.post-title {
     font-family: var(--Lexend);
     font-size: 2.5rem;
 }
 
-h3 {
+.posted {
     font-size: 1.3rem;
     font-family: var(--Abel);
 }
 
-h2 {
-    font-family: var(--Lexend);
+p {
+    font-family: var(--Abel);
 }
 
 a {
     text-decoration: none;
-    color: var(--text-grey);
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 span {
@@ -53,7 +61,7 @@ span {
     --text-grey: #3f4954;
     --text-light: #686666da;
     --bg-color: #f0f2f5;
-    --active-color: #ffc107;
+    --active-color: #ff9800;
     --white: #ffffff;
     --midnight: #104f55;
     /* Gradient color */

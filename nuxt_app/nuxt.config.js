@@ -68,7 +68,13 @@ export default {
         'QItem',
         'QItemSection',
         'QItemLabel',
-        'QSeparator'
+        'QSeparator',
+        'QChip',
+        'QImg',
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QParallax'
       ],
       // directives: ["ClosePopup"],
       // plugins: ["Cookies"],
