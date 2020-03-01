@@ -23,7 +23,8 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: false,
+
   /*
   ** Global CSS
   */
@@ -34,6 +35,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/ui-component.js',
+
   ],
   /*
   ** Nuxt.js dev-modules
@@ -46,7 +49,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     'nuxt-quasar',
-    ['@nuxtjs/proxy', { pathRewrite: { '^/api': '/blog-api' } }],
+    ['@nuxtjs/proxy', { pathRewrite: { '^/api': '/api' } }],
 
   ],
   axios: {
@@ -68,13 +71,11 @@ export default {
         'QItem',
         'QItemSection',
         'QItemLabel',
-        'QSeparator',
         'QChip',
-        'QImg',
-        'QCard',
-        'QCardSection',
-        'QCardActions',
-        'QParallax'
+        'QTabs',
+        'QTab',
+        'QRouteTab'
+
       ],
       // directives: ["ClosePopup"],
       // plugins: ["Cookies"],
@@ -86,7 +87,10 @@ export default {
 
     }
   },
-
+  transition: {
+    name: "fade",
+    mode: "out-in"
+  },
 
   proxy: {
     '/api': 'http://127.0.0.1:8000/',

@@ -141,6 +141,7 @@ AUTHENTICATION_BACKENDS = (
 #         'rest_framework.permissions.IsAuthenticated',
 #     ]
 # }
+REST_USE_JWT = True  # return full jwt response user token
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'profiles.serializers.UserProfileSerializer',
     # 'TOKEN_SERIALIZER': 'path.to.custom.TokenSerializer',
@@ -148,7 +149,7 @@ REST_AUTH_SERIALIZERS = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ]
 }
 

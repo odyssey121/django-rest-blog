@@ -1,12 +1,19 @@
 <template>
-  <div class="header-container">
+  <div class="header-container bg-grey-2">
     <header class="the-header">
       <TheSideNavToggle @toggle="$emit('sidenavToggle')" />
       <div class="logo">
-        <nuxt-link to="/">WD BLOG</nuxt-link>
+        <nuxt-link to="/">SH BLOG</nuxt-link>
       </div>
       <div class="navigation-items">
-        <ul class="nav-list">
+        <q-tabs active-color="orange" style="height:100%;">
+          <q-route-tab to="/posts" label="Blog" exact />
+          <q-route-tab to="/about" label="About" exact />
+        </q-tabs>
+        <q-tabs active-color="orange" style="height:100%;">
+          <q-route-tab to="/login" label="Login" exact />
+        </q-tabs>
+        <!-- <ul class="nav-list">
           <li class="nav-item">
             <nuxt-link to="/posts">Blog</nuxt-link>
           </li>
@@ -18,7 +25,7 @@
           <li class="nav-item">
             <nuxt-link to="/admin">Admin</nuxt-link>
           </li>
-        </ul>
+        </ul>-->
       </div>
     </header>
   </div>
@@ -33,25 +40,26 @@ export default {
 </script>
 <style scoped>
 .header-container {
-  height: 60px;
+  height: 54px;
   box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  display: flex;
+  justify-content: center;
+  background: var(--sky);
 }
 
 .the-header {
-  width: 100%;
   position: fixed;
-  height: 60px;
+  height: 54px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: var(--sky);
   z-index: 100;
   box-sizing: border-box;
-  padding: 0 10%;
   color: var(--text-grey);
 }
 
 .logo {
+  width: 8rem;
   font-size: 1.3rem;
   margin-right: 1rem;
 }
@@ -63,12 +71,19 @@ export default {
 .navigation-items {
   display: none;
   height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .navigation-items {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 768px) {
+  .the-header {
+    left: 0;
   }
 }
 

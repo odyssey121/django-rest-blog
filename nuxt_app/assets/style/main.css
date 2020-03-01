@@ -1,7 +1,5 @@
 @import url('./fonts.css');
-
-html,
-body {
+html, body {
     padding: 0;
     margin: 0;
 }
@@ -10,14 +8,13 @@ body {
     box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
 ul {
     padding: 0;
+    list-style: none;
 }
 
 a {
@@ -49,6 +46,31 @@ a:hover {
 
 span {
     font-family: var(--Abel);
+}
+
+@media (min-width: 768px) {
+    .container, .the-header {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container, .the-header {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container, .the-header {
+        width: 1170px;
+    }
+}
+
+.container, .the-header {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 :root {

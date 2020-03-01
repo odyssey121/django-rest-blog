@@ -2,7 +2,9 @@
   <div id="main-layout">
     <TheHeader @sidenavToggle="toggleView" />
     <TheSideNav @close="toggleView" :show="showToggle"></TheSideNav>
-    <nuxt />
+    <div class="container">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -10,11 +12,18 @@
 import TheHeader from "~/components/Navigation/TheHeader";
 import TheSideNav from "~/components/Navigation/TheSideNav";
 import { mapGetters, mapActions } from "vuex";
+
 export default {
   components: { TheHeader, TheSideNav },
+
   created() {
-    this.$store.dispatch("getPosts");
+    this.$q.loadingBar.setDefaults({
+      color: "orange",
+      size: "2px",
+      position: "top"
+    });
   },
+
   data() {
     return {
       showToggle: false
@@ -28,4 +37,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

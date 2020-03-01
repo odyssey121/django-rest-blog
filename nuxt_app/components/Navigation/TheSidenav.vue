@@ -4,19 +4,23 @@
     <transition name="slide-side">
       <div v-if="show" class="sidenav">
         <q-list bordered class="nav-list" @click="$emit('close')">
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon color="primary" name="bluetooth" />
+          <q-item>
+            <q-item-section>
+              <nuxt-link to="/">WD BLOG</nuxt-link>
             </q-item-section>
-
-            <q-item-section>Icon as avatar</q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section>
+              <nuxt-link to="/posts">Blog</nuxt-link>
+            </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar color="teal" text-color="white" icon="bluetooth" />
+          <q-item>
+            <q-item-section>
+              <nuxt-link to="/about">About</nuxt-link>
             </q-item-section>
-
+          </q-item>
+          <q-item>
             <q-item-section>Avatar-type icon</q-item-section>
           </q-item>
           <!-- <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
